@@ -10,5 +10,5 @@
     "nodemailer": "^6.4.10"
   },
   "author": "Deepu KS (@deepu105)",
-  "license": "GNU General Public License (GPL)"
+  "license": "MIT"
 }
