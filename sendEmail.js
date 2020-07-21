@@ -2,6 +2,8 @@
 Steps to call this API
 `node sendEmail mailinglist.csv`
 Argument 1 is the CSV file name in the same directory. The CSV should have `name,email` as header followed by actual names, email ids
+
+Inspired by https://github.com/psudeep/send-bulk-email
 */
 
 const nodemailer = require("nodemailer");
@@ -65,29 +67,36 @@ const csvFilePath = currentPath + "/" + csvFile;
 
 console.log("csvFilePath", csvFilePath);
 
+const getMsgParams = (it) => {
+  const signature = `
+    Deepu K Sasidharan<br>
+    <i>Developer Advocate</i><br><br>
+    <i>Twitter: @deepu105</i><br>
+    <a href="https://www.adyen.com/" display: inline-block;"><img src="https://i.imgur.com/KB3fWTZ.png" width="125" height="42" style="width: 125px; height: 42px; border: none;"></a>
+    `;
+  const senderName = "Deepu K Sasidharan";
+  const subject = `Hi ${it.name} - You are invited to our online session`;
+  const emailId = it.email;
+  const htmlBody = `
+      Hi ${it.name},<br/><br/>
+
+      Hope you’re doing well. My name is ${senderName} and I am a developer advocate at <a href="https://www.adyen.com/">Adyen</a>.<br/><br/>
+
+      Best,<br/>
+
+      ${signature}
+    `;
+
+  return [subject, emailId, htmlBody];
+};
+
 function sendBulkEmail() {
   csv()
     .fromFile(csvFilePath)
     .then((jsonObj) => {
       jsonObj.map(async (i) => {
-        const signature = `
-          Deepu K Sasidharan<br>
-          <i>Developer Advocate</i><br><br>
-          <i>Twitter: @deepu105</i><br>
-          <a href="https://www.adyen.com/" display: inline-block;"><img src="https://i.imgur.com/KB3fWTZ.png" width="125" height="42" style="width: 125px; height: 42px; border: none;"></a>
-          `;
-        const senderName = "Deepu K Sasidharan";
-        const subject = `Hi ${i.name} - You are invited to our online session`;
-        const emailId = i.email;
-        const htmlBody = `
-            Hi ${i.name},<br/><br/>
-    
-            Hope you’re doing well. My name is ${senderName} and I am a developer advocate at <a href="https://www.adyen.com/">Adyen</a>.<br/><br/>
-    
-            Best,<br/>
-    
-            ${signature}
-          `;
+        const [subject, emailId, htmlBody] = getMsgParams(i);
+
         console.log("Sending to emailId:", emailId, ", subject:", subject);
         try {
           await sendEmail(emailId, htmlBody, subject);
