@@ -28,3 +28,6 @@ EMAIL_PASS="your email password"
 EMAIL_HOST=smtp.yourhost.com
 EMAIL_FROM="the email id to be used as from"
 ```
+
+
+Inspired by https://github.com/psudeep/send-bulk-email
