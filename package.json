@@ -1,0 +1,14 @@
+{
+  "name": "bulk_email_sender",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Code to Send bulk email",
+  "keywords": [],
+  "dependencies": {
+    "csvtojson": "^2.0.10",
+    "dotenv": "^8.2.0",
+    "nodemailer": "^6.4.10"
+  },
+  "author": "Deepu KS (@deepu105)",
+  "license": "GNU General Public License (GPL)"
+}

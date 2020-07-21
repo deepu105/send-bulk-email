@@ -1,0 +1,8 @@
+node_modules/
+.tmp/
+.idea/
+.vscode/
+.DS_Store
+assets/.DS_Store
+.env
+mailinglist.csv
