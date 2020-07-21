@@ -4,7 +4,7 @@ A handy NodeJS script to send bulk emails to contacts from a CSV list
 
 ### Usage
 
-Steps to call this API
+Steps to call this API (clone the repo, CD into it and run `npm install` first)
 
 ```
 node sendEmail mailinglist.csv
