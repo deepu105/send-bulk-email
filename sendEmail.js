@@ -70,7 +70,6 @@ const getMsgParams = (name) => {
   const signature = `
     Deepu K Sasidharan<br>
     <i>Developer Advocate</i><br><br>
-    <i>Mobile: +31 657 635 007</i><br>
     <i>Twitter: @deepu105</i><br>
     <a href="https://www.adyen.com/" style="color: rgb(27, 106, 203); display: inline-block;"><img src="https://i.imgur.com/KB3fWTZ.png" width="125" height="42" style="width: 125px; height: 42px; border: none;"></a>
     `;
